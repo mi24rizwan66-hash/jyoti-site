@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jyoti 💖</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .box {
+            margin-top: 20%;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        p {
+            font-size: 22px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: white;
+            color: #ff4f81;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ffe6ec;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Hi Jyoti 💖</h1>
+    <p>This website is specially made for you ✨</p>
+    <button onclick="showMessage()">Click Me</button>
+</div>
+
+<script>
+function showMessage() {
+    alert("Jyoti, you are very special 💕");
+}
+</script>
+
+</body>
+</html>
