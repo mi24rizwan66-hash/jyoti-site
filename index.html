@@ -75,3 +75,121 @@ function showMessage() {
 </audio>
 
 <button onclick="document.getElementById('mysong').play();">Play Song 🎶</button>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Jyoti 💖</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 50px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {text-shadow: 0 0 10px #fff;}
+            to {text-shadow: 0 0 25px #ffeb3b;}
+        }
+
+        p {
+            font-size: 22px;
+        }
+
+        #countdown {
+            font-size: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(45deg);
+            animation: floatUp 5s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes floatUp {
+            0% {transform: translateY(0) rotate(45deg); opacity:1;}
+            100% {transform: translateY(-800px) rotate(45deg); opacity:0;}
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Happy Birthday Jyoti 💖</h1>
+<p>This website is specially made by Rizwan 💻🔥</p>
+
+<div id="countdown"></div>
+
+<script>
+    // 🎂 Countdown Timer
+    const countDownDate = new Date("Nov 15, 2026 00:00:00").getTime();
+
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = 
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        if(distance < 0){
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "🎉🎉 Happy Birthday Jyoti! 🎉🎉";
+        }
+    }, 1000);
+
+    // 💖 Floating hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
