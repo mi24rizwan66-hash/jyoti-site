@@ -193,3 +193,44 @@ function showMessage() {
 
 </body>
 </html>
+<script>
+  // 🎂 Countdown Timer (existing)
+  const countDownDate = new Date("Nov 15, 2026 00:00:00").getTime();
+
+  const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if(distance < 0){
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "🎉🎉 Happy Birthday Jyoti! 🎉🎉";
+      }
+  }, 1000);
+
+  // 💖 Floating hearts
+  function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+          heart.remove();
+      }, 5000);
+  }
+
+  setInterval(createHeart, 300);
+
+  // 🔥 Surprise alert on page load
+  window.onload = function() {
+      alert("Farda kolna hai 😏💖");  // Pop-up jab page open ho
+  };
+</script>
