@@ -1,268 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jyoti 💖</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: white;
-        }
-
-        .box {
-            margin-top: 20%;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        h1 {
-            font-size: 50px;
-        }
-
-        p {
-            font-size: 22px;
-        }
-
-        button {
-            padding: 12px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            background: white;
-            color: #ff4f81;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #ffe6ec;
-        }
-
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="box">
-    <h1>Hi Jyoti 💖</h1>
-    <p>This website is specially made for you ✨</p>
-    <button onclick="showMessage()">Click Me</button>
-</div>
-
-<script>
-function showMessage() {
-    alert("Jyoti, you are very special 💕");
-}
-</script>
-
-</body>
-</html>
-<h1>Hi Jyoti 💖</h1>
-<p>Happy Birthday 🎂✨ This website is specially made for you by Rizwan 💻🔥</p>
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-<audio id="mysong" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-<button onclick="document.getElementById('mysong').play();">Play Song 🎶</button>
-<!DOCTYPE html>
-<html>
-<head>
     <title>Happy Birthday Jyoti 💖</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            color: white;
             overflow: hidden;
+            height: 100%;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
             text-align: center;
         }
 
-        h1 {
+        /* Red curtain overlay */
+        #redScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: red;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 60px;
+        }
+
+        /* Hey Jyoti */
+        #heyText {
             font-size: 50px;
-            margin-top: 50px;
+            color: yellow;
+            display: none;
             animation: glow 2s infinite alternate;
+            margin-top: 20px;
         }
 
         @keyframes glow {
             from {text-shadow: 0 0 10px #fff;}
-            to {text-shadow: 0 0 25px #ffeb3b;}
+            to {text-shadow: 0 0 25px #fff;}
         }
 
-        p {
-            font-size: 22px;
+        /* Slideshow */
+        #slideshow {
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            display: none;
+            position: relative;
         }
 
+        #slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Countdown */
         #countdown {
             font-size: 30px;
-            margin-top: 20px;
             font-weight: bold;
+            margin-top: 20px;
+            display: none;
         }
 
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: red;
-            transform: rotate(45deg);
-            animation: floatUp 5s linear infinite;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: red;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 10px;
-            top: 0;
-        }
-
-        @keyframes floatUp {
-            0% {transform: translateY(0) rotate(45deg); opacity:1;}
-            100% {transform: translateY(-800px) rotate(45deg); opacity:0;}
+        /* Proposal */
+        #proposal {
+            font-size: 40px;
+            color: #fff;
+            margin-top: 30px;
+            display: none;
+            animation: glow 2s infinite alternate;
         }
 
     </style>
 </head>
 <body>
 
-<h1>Happy Birthday Jyoti 💖</h1>
-<p>This website is specially made by Rizwan 💻🔥</p>
+<!-- Red screen -->
+<div id="redScreen">🎬</div>
 
+<!-- Hey Jyoti -->
+<div id="heyText">Hey Jyoti 👹</div>
+
+<!-- Slideshow -->
+<div id="slideshow">
+    <img src="https://i.ibb.co/3vP2HfX/pic1.jpg" alt="Memory 1">
+    <img src="https://i.ibb.co/4Jr0fZx/pic2.jpg" alt="Memory 2">
+    <img src="https://i.ibb.co/QD5H3tG/pic3.jpg" alt="Memory 3">
+</div>
+
+<!-- Countdown -->
 <div id="countdown"></div>
 
+<!-- Proposal -->
+<div id="proposal">Jyoti, Will You Be Mine? 💖</div>
+
 <script>
-    // 🎂 Countdown Timer
-    const countDownDate = new Date("Nov 15, 2026 00:00:00").getTime();
+    // 🔴 Red curtain fade
+    setTimeout(() => {
+        document.getElementById('redScreen').style.display = 'none';
+        document.getElementById('heyText').style.display = 'block';
+        startSlideshow();
+        startCountdown();
+    }, 2000); // 2 sec red screen
 
-    const x = setInterval(function() {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
+    // 🖼 Slideshow
+    const slides = document.querySelectorAll("#slideshow img");
+    let currentSlide = 0;
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    function startSlideshow() {
+        const slideshowDiv = document.getElementById('slideshow');
+        slideshowDiv.style.display = 'block';
+        slides[currentSlide].style.opacity = 1;
 
-        document.getElementById("countdown").innerHTML = 
-            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-        if(distance < 0){
-            clearInterval(x);
-            document.getElementById("countdown").innerHTML = "🎉🎉 Happy Birthday Jyoti! 🎉🎉";
-        }
-    }, 1000);
-
-    // 💖 Floating hearts
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.animationDuration = 3 + Math.random() * 2 + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
+        setInterval(() => {
+            slides[currentSlide].style.opacity = 0;
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.opacity = 1;
+        }, 2500); // every 2.5 sec
     }
 
-    setInterval(createHeart, 300);
+    // ⏳ Countdown Timer
+    function startCountdown() {
+        document.getElementById('countdown').style.display = 'block';
+        const countDownDate = new Date("Nov 15, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if(distance < 0){
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "🎉🎉 Happy Birthday Jyoti! 🎉🎉";
+                showProposal();
+            }
+        }, 1000);
+    }
+
+    // 💖 Show Proposal
+    function showProposal() {
+        document.getElementById('proposal').style.display = 'block';
+    }
+
 </script>
 
 </body>
 </html>
-<script>
-  // 🎂 Countdown Timer (existing)
-  const countDownDate = new Date("Nov 15, 2026 00:00:00").getTime();
-
-  const x = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("countdown").innerHTML = 
-          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-      if(distance < 0){
-          clearInterval(x);
-          document.getElementById("countdown").innerHTML = "🎉🎉 Happy Birthday Jyoti! 🎉🎉";
-      }
-  }, 1000);
-
-  // 💖 Floating hearts
-  function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.animationDuration = 3 + Math.random() * 2 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => {
-          heart.remove();
-      }, 5000);
-  }
-
-  setInterval(createHeart, 300);
-
-  // 🔥 Surprise alert on page load
-  window.onload = function() {
-      alert("Farda kolna hai 😏💖");  // Pop-up jab page open ho
-  };
-</script>
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* full viewport height */
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    overflow: hidden;
-    text-align: center;
-}
-.sparkle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: yellow;
-  border-radius: 50%;
-  opacity: 0.8;button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #fff;
-}
-  animation: sparkleAnim 2s linear infinite;
-}
-
-@keyframes sparkleAnim {
-  0% {transform: translateY(0) scale(1);}
-  100% {transform: translateY(-500px) scale(0);}p {
-  font-size: 22px;
-  text-shadow: 0 0 5px #fff;
-}
-
